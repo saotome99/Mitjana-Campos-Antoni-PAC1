@@ -159,3 +159,13 @@ Els metabòlits representen compostos químics mesurats en els pacients. Els val
 <h2>Notes Addicionals</h2>
 
 <div style="background-color: #f9f9f9; padding: 10px; border-left: 5px solid #
+
+
+<div style="background-color: #f9f9f9; padding: 10px; border-left: 5px solid #0055a5;">
+    <p><strong>Valors mancats</strong>: Algunes entrades del dataset poden contenir valors mancats (NA). Aquests valors s'han de tractar adequadament abans de l'anàlisi.</p>
+    <p><strong>Nombres de mostres</strong>: El dataset inclou mostres de pacients en diferents estats clínics, proporcionant context a les concentracions metabòliques.</p>
+</div>
+
+<h2>Font de les Dades</h2>
+
+Les dades provenen d'un estudi metabòlic realitzat amb pacients afectats per la pèrdua muscular (cachexia). Aquest dataset forma part d'un estudi ampli sobre el metabolisme i les condicions relacionades amb la cachexia.
