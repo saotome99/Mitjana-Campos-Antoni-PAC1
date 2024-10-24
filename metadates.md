@@ -34,11 +34,114 @@ A continuació es descriuen les principals variables incloses en el dataset:
         <td>Categoria (factor)</td>
         <td>cachexic, non-cachexic</td>
     </tr>
+    <!-- Comença la llista de metabòlits -->
     <tr>
-        <td><strong>Metabòlits</strong></td>
-        <td>Concentració dels diferents metabòlits mesurats en cada pacient.</td>
+        <td><strong>1,6-Anhydro-beta-D-glucose</strong></td>
+        <td>Concentració del metabòlit 1,6-Anhydro-beta-D-glucose.</td>
         <td>Valor numèric (numeric)</td>
         <td>40.85, 65.37</td>
+    </tr>
+    <tr>
+        <td><strong>1-Methylnicotinamide</strong></td>
+        <td>Concentració del metabòlit 1-Methylnicotinamide.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>65.37, 340.36</td>
+    </tr>
+    <tr>
+        <td><strong>2-Aminobutyrate</strong></td>
+        <td>Concentració del metabòlit 2-Aminobutyrate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>18.73, 24.29</td>
+    </tr>
+    <tr>
+        <td><strong>2-Hydroxyisobutyrate</strong></td>
+        <td>Concentració del metabòlit 2-Hydroxyisobutyrate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>26.05, 41.68</td>
+    </tr>
+    <tr>
+        <td><strong>2-Oxoglutarate</strong></td>
+        <td>Concentració del metabòlit 2-Oxoglutarate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>71.52, 67.36</td>
+    </tr>
+    <tr>
+        <td><strong>3-Aminoisobutyrate</strong></td>
+        <td>Concentració del metabòlit 3-Aminoisobutyrate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>1480.30, 116.75</td>
+    </tr>
+    <tr>
+        <td><strong>3-Hydroxybutyrate</strong></td>
+        <td>Concentració del metabòlit 3-Hydroxybutyrate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>56.83, 43.82</td>
+    </tr>
+    <tr>
+        <td><strong>3-Hydroxyisovalerate</strong></td>
+        <td>Concentració del metabòlit 3-Hydroxyisovalerate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>10.07, 79.84</td>
+    </tr>
+    <tr>
+        <td><strong>Tryptophan</strong></td>
+        <td>Concentració del metabòlit Tryptophan.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>259.82, 83.10</td>
+    </tr>
+    <tr>
+        <td><strong>Tyrosine</strong></td>
+        <td>Concentració del metabòlit Tyrosine.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>290.03, 167.34</td>
+    </tr>
+    <tr>
+        <td><strong>Uracil</strong></td>
+        <td>Concentració del metabòlit Uracil.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>111.05, 46.99</td>
+    </tr>
+    <tr>
+        <td><strong>Valine</strong></td>
+        <td>Concentració del metabòlit Valine.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>86.49, 109.95</td>
+    </tr>
+    <tr>
+        <td><strong>Xylose</strong></td>
+        <td>Concentració del metabòlit Xylose.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>72.24, 192.48</td>
+    </tr>
+    <tr>
+        <td><strong>cis-Aconitate</strong></td>
+        <td>Concentració del metabòlit cis-Aconitate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>237.46, 333.62</td>
+    </tr>
+    <tr>
+        <td><strong>myo-Inositol</strong></td>
+        <td>Concentració del metabòlit myo-Inositol.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>135.64, 376.15</td>
+    </tr>
+    <tr>
+        <td><strong>trans-Aconitate</strong></td>
+        <td>Concentració del metabòlit trans-Aconitate.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>51.94, 217.02</td>
+    </tr>
+    <tr>
+        <td><strong>pi-Methylhistidine</strong></td>
+        <td>Concentració del metabòlit pi-Methylhistidine.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>157.59, 307.97</td>
+    </tr>
+    <tr>
+        <td><strong>tau-Methylhistidine</strong></td>
+        <td>Concentració del metabòlit tau-Methylhistidine.</td>
+        <td>Valor numèric (numeric)</td>
+        <td>160.77, 130.32</td>
     </tr>
 </table>
 
@@ -55,12 +158,4 @@ Els metabòlits representen compostos químics mesurats en els pacients. Els val
 
 <h2>Notes Addicionals</h2>
 
-<div style="background-color: #f9f9f9; padding: 10px; border-left: 5px solid #0055a5;">
-    <p><strong>Valors mancats</strong>: Algunes entrades del dataset poden contenir valors mancats (NA). Aquests valors s'han de tractar adequadament abans de l'anàlisi.</p>
-    <p><strong>Nombres de mostres</strong>: El dataset inclou mostres de pacients en diferents estats clínics, proporcionant context a les concentracions metabòliques.</p>
-</div>
-
-<h2>Font de les Dades</h2>
-
-Les dades provenen d'un estudi metabòlic realitzat amb pacients afectats per la pèrdua muscular (cachexia). Aquest dataset forma part d'un estudi ampli sobre el metabolisme i les condicions relacionades amb la cachexia.
-
+<div style="background-color: #f9f9f9; padding: 10px; border-left: 5px solid #
