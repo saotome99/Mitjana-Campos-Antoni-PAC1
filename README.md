@@ -19,7 +19,7 @@ Aquest projecte analitza les dades metabolòmiques de pacients amb caquèxia en 
   
 ## Executar l'Anàlisi
 1. Carrega el dataset `human_cachexia.csv`.
-2. Executa el codi proporcionat en `analisi.R`.
+2. Executa el codi proporcionat en `PAC1.Rmd`.
 3. Revisa els resultats en visualitzacions i estadístiques.
 
 ## Contribució
