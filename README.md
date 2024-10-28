@@ -26,4 +26,4 @@ Aquest projecte analitza les dades metabolòmiques de pacients amb caquèxia en 
 Aquest projecte contribueix a la comprensió de les alteracions metabòliques en caquèxia i ofereix una base per a futurs estudis sobre biomarcadors i teràpies.
 
 ## Contacte
-Per a preguntes, contacta a [antoni.mitjana@institutbioinfo.org](mailto:antoni.mitjana@institutbioinfo.org).
+Per a preguntes, contacta a [amitjanac@uoc.edu](mailto:amitjanac@uoc.edu).
