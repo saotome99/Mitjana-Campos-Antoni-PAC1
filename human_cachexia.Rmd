@@ -1,0 +1,110 @@
+---
+title: "Anàlisi Metabolòmica de la Caquèxia amb SummarizedExperiment"
+author: "Antoni Mitjana Campos"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+# Configuració inicial per a knitr
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+```{r PAC1}
+# Instal·la i carrega les biblioteques necessàries
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("SummarizedExperiment")
+library(SummarizedExperiment)
+library(readxl)
+library(ggplot2)
+library(pheatmap)
+
+# Llegeix el dataset de l'arxiu Excel
+data <- read_excel("human_cachexia.xlsx")
+
+# Separa les dades de metabolits i les metadades
+metabolite_data <- as.data.frame(data[, -(1:2)])  # Exclou les dues primeres columnes
+rownames(metabolite_data) <- data$`Patient ID`
+
+# Transposa les dades de metabolits per tenir els pacients com a columnes
+metabolite_data <- t(metabolite_data)
+
+# Crea el DataFrame de metadades amb els pacients com a files
+metadata <- data.frame(
+  Patient_ID = data$`Patient ID`,
+  Muscle_loss = data$`Muscle loss`,
+  row.names = data$`Patient ID`
+)
+
+# Elimina duplicats i valors buits
+metadata <- metadata[!duplicated(rownames(metadata)) & !is.na(rownames(metadata)), ]
+metabolite_data <- metabolite_data[, !duplicated(colnames(metabolite_data)) & !is.na(colnames(metabolite_data)), drop = FALSE]
+
+# Filtra els pacients comuns
+common_patients <- intersect(rownames(metadata), colnames(metabolite_data))
+metabolite_data <- metabolite_data[, common_patients, drop = FALSE]
+metadata <- metadata[common_patients, , drop = FALSE]
+
+# Verifica les dimensions després del filtratge
+cat("Dimensions després del filtratge:", dim(metabolite_data), dim(metadata), "\n")
+
+# Comprova si hi ha pacients que no coincideixen
+cat("Pacients en metabolite_data però no en metadata:", setdiff(colnames(metabolite_data), rownames(metadata)), "\n")
+cat("Pacients en metadata però no en metabolite_data:", setdiff(rownames(metadata), colnames(metabolite_data)), "\n")
+
+# Crea el SummarizedExperiment si les dimensions coincideixen
+if (ncol(metabolite_data) == nrow(metadata)) {
+  se <- SummarizedExperiment(
+    assays = list(counts = as.matrix(metabolite_data)),
+    colData = metadata
+  )
+  print("SummarizedExperiment creat amb èxit")
+  print(se)
+} else {
+  stop("Les dimensions de metabolite_data i metadata no coincideixen.")
+}
+
+# Guardar l'objecte
+save(se, file = "human_cachexia.Rda")
+
+# Anàlisi PCA
+pca <- prcomp(t(assay(se)), scale. = TRUE)
+
+# Convertir el resultat del PCA en un data frame per a ggplot2
+pca_data <- data.frame(PC1 = pca$x[, 1], PC2 = pca$x[, 2], Muscle_loss = colData(se)$Muscle_loss)
+
+# Crear el gràfic PCA amb ggplot2
+ggplot(pca_data, aes(x = PC1, y = PC2, color = Muscle_loss)) +
+  geom_point(size = 3) +
+  ggtitle("Anàlisi de Components Principals (PCA)") +
+  xlab("Component Principal 1") +
+  ylab("Component Principal 2") +
+  theme_minimal()
+
+# Generació de Heatmap amb font més petita
+pheatmap(assay(se), main = "Heatmap de Concentracions de Metabòlits",
+         cluster_rows = TRUE, cluster_cols = TRUE, fontsize = 6)
+
+# Aplicació de proves estadístiques amb correcció FDR
+resultats <- apply(assay(se), 1, function(x) {
+  test <- t.test(x ~ se$Muscle_loss)
+  test$p.value
+})
+
+# Correcció dels p-valors amb FDR
+p_vals_adjusted <- p.adjust(resultats, method = "fdr")
+
+# Seleccionar els metabòlits amb p-valor ajustat < 0.05
+significatius <- rownames(assay(se))[p_vals_adjusted < 0.05]
+
+# Comprovar si hi ha resultats significatius
+if (length(significatius) > 0) {
+  print(paste("Metabòlits significatius:", significatius))
+} else {
+  print("No s'han trobat metabòlits significatius.")
+}
+```
